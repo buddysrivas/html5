@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html xmlns:fb="http://ogp.me/ns/fb#">
+<head>
+<script type="text/javascript" src="js/jquery-1.6.2.min.js"></script>
+<script type="text/javascript" src="js/jquery-ui-1.8.16.custom.min.js"></script>
+<link type="text/css" href="css/jquery-ui-1.8.16.custom.css" rel="stylesheet" />
+
+<link type="text/css" href="css/style.css" rel="stylesheet" />
+
+
+<link href='css/text.css' rel='stylesheet' type='text/css'>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<script>
+	var transition_mode = 0;
+	var transition_steps = 0;
+</script>
+<script type="text/javascript" src="js/jsprod.js"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/webfont/1/webfont.js"></script>
+
+
+<script type="text/javascript" src="js/TweenLite.min.js"></script>
+<script type="text/javascript" src="js/CSSPlugin.min.js"></script>
+<script type="text/javascript" src="js/TimelineLite.min.js"></script>
+<script type="text/javascript" src="js/EasePack.min.js"></script>
+
+
+
+<script src="project/data.js"></script>
+
+
+<link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700,400italic,700italic|Lato:300,400,700,400italic,700italic|Ubuntu:400,700,400italic,700italic|Rokkitt:400,700|Josefin+Slab:400,700,400italic,700italic|Open+Sans:400italic,700italic,400,700|Abril+Fatface|Old+Standard+TT:400,700|Vollkorn:400italic,700italic,400,700' rel='stylesheet' type='text/css'>
+<style>
+
+
+@font-face {
+  font-family: 'Oswald';
+  font-weight: 300;
+  src: local('☺'), url(http://themes.googleusercontent.com/static/fonts/oswald/v7/HqHm7BVC_nzzTui2lzQTDT8E0i7KZn-EPnyo3HZu7kw.woff) format('woff');
+}
+
+@font-face {
+  font-family: 'Oswald';
+  font-weight: 400;
+  src: local('☺'), url(http://themes.googleusercontent.com/static/fonts/oswald/v7/-g5pDUSRgvxvOl5u-a_WHw.woff) format('woff');
+}
+
+@font-face {
+  font-family: 'Oswald';
+  font-weight: 700;
+  src: local('☺'), url(http://themes.googleusercontent.com/static/fonts/oswald/v7/bH7276GfdCjMjApa_dkG6T8E0i7KZn-EPnyo3HZu7kw.woff) format('woff');
+}
+
+
+</style>
+<script>
+
+	var fonts = [
+
+	"Arial", "Courier New",  "Georgia",  "Impact",  "Times New Roman",  "Trebuchet MS",  "Verdana",  "Josefin Slab",  "Abril Fatface",  "Old Standard TT", "Ubuntu", "Vollkorn", "Lato", "PT Mono", "Source Sans Pro", "Oswald", "Rokkitt"
+
+];
+
+</script>
+<script> 
+
+
+
+var vm_settings = {
+
+	ajax_request: 1,
+	current_slide: 0,
+	timeline: [],
+	edit_mode: 0,
+	image_url: "",
+	status: "loading",
+	fonts_dir: "fonts/",
+	svg_dir: ""
+}
+
+
+
+	 
+$(document).keydown(function(e){
+ 	if (e.keyCode == 37) { $(".prev_slide").click(); }
+	if (e.keyCode == 39) { $(".next_slide").click(); }
+
+	
+});
+
+$(document).ready(function(){
+
+		var sldr = 	$("#time_slider");
+	var handleHelper = sldr.find( ".ui-slider-handle" );
+	handleHelper.css("background", "url(i/published/handle.png) center no-repeat");
+
+	handleHelper.css("width", "32px");
+	handleHelper.css("height", "40px");
+	handleHelper.css("cursor", "pointer");
+	handleHelper.css("border", "none");
+	handleHelper.css("margin-top", "-10px");
+	$(".ui-widget-header").css("background", "url(i/published/progress.png)");
+	$(".ui-slider-horizontal").css("height", "10px");
+	processProject();
+	$("#stage").css({"width": vm_project.w, "height": vm_project.h})
+	if(vm_settings.ajax_request <= 1) finish_loading();
+	$(".slides_counter i").text(vm_project.sld.length);
+	
+	
+})
+
+</script>
+
+
+<title></title>
+<script type="text/javascript" src="js/fullscreen.js"></script>   		 				 
+</head>
+<body  >
+<div class="loader_code"><div class="loader"></div></div>
+<div class="wrapper">
+	
+		
+			
+		
+<div id="stage" >
+	<div id="content_rls" >
+	
+	</div>
+</div>
+
+</div>
+	
+
+		<div class="controls footer1">
+			<div class="foot_center">
+				<div class="play_div b_wrap"><a href="#" class="play"></a></div>
+
+				<div class="timeline_slider_div slider_wrap">
+					<div class="timeline_slider" id="time_slider"></div>
+				</div>
+				
+				<div class="stick"><!-- --></div>
+				<a href="#" class="fullscreen">Toggle fullscreen</a>
+				
+				<div class="line_limit"><!-- --></div>
+				
+				<div class="slide_controls">
+					<div class="prev_slide_div b_wrap"><a href="#" class="prev_slide prev"></a></div>
+					<div class="slides_counter">Slide <span>1</span> of <i>1</i></div>
+					<div class="next_slide_div b_wrap"><a href="#" class="next_slide next"></a></div>
+				</div>
+			</div>
+			
+		
+		</div>
+</div> 
+	
+
+</body>
+
+</html>
